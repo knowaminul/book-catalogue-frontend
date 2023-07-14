@@ -1,0 +1,149 @@
+[
+  {
+    "title": "The Great Gatsby",
+    "image": "https://m.media-amazon.com/images/I/71FTb9X6wsL._SY425_.jpg",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Classic",
+    "publicationDate": "1925"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "image": "https://m.media-amazon.com/images/I/51N5qVjuKAL._SY445_SX342_.jpg",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "publicationDate": "1960"
+  },
+  {
+    "title": "1984",
+    "image": "https://m.media-amazon.com/images/I/41aM4xOZxaL._SY445_SX342_.jpg",
+    "author": "George Orwell",
+    "genre": "Dystopian",
+    "publicationDate": "1949"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "image": "https://m.media-amazon.com/images/I/41xCxs0B+cL._SY425_.jpg",
+    "author": "Jane Austen",
+    "genre": "Romance",
+    "publicationDate": "1813"
+  },
+  {
+    "title": "Harry Potter and the Philosopher's Stone",
+    "image": "https://m.media-amazon.com/images/I/51SkIDTd9rL._SY445_SX342_.jpg",
+    "author": "J.K. Rowling",
+    "genre": "Fantasy",
+    "publicationDate": "1997"
+  },
+  {
+    "title": "The Lord of the Rings",
+    "image": "https://m.media-amazon.com/images/I/71jLBXtWJWL._SY425_.jpg",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "publicationDate": "1954"
+  },
+  {
+    "title": "Moby-Dick",
+    "image": "https://m.media-amazon.com/images/I/41VnFKC9srL._SY445_SX342_.jpg",
+    "author": "Herman Melville",
+    "genre": "Adventure",
+    "publicationDate": "1851"
+  },
+  {
+    "title": "To the Lighthouse",
+    "image": "https://m.media-amazon.com/images/I/71H-0fOURHL._SY425_.jpg",
+    "author": "Virginia Woolf",
+    "genre": "Modernist",
+    "publicationDate": "1927"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "image": "https://m.media-amazon.com/images/I/61fgOuZfBGL._SY425_.jpg",
+    "author": "J.D. Salinger",
+    "genre": "Coming-of-age",
+    "publicationDate": "1951"
+  },
+  {
+    "title": "Brave New World",
+    "image": "https://m.media-amazon.com/images/I/41-n-3hZMeL._SY445_SX342_.jpg",
+    "author": "Aldous Huxley",
+    "genre": "Dystopian",
+    "publicationDate": "1932"
+  },
+  {
+    "title": "Jane Eyre",
+    "image": "https://m.media-amazon.com/images/I/81xuX4xruOL._SY425_.jpg",
+    "author": "Charlotte Bronte",
+    "genre": "Gothic",
+    "publicationDate": "1847"
+  },
+  {
+    "title": "The Hobbit",
+    "image": "https://m.media-amazon.com/images/I/710+HcoP38L._SY425_.jpg",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "publicationDate": "1937"
+  },
+  {
+    "title": "The Odyssey",
+    "image": "https://m.media-amazon.com/images/I/819IxwjBa9L._SY425_.jpg",
+    "author": "Homer",
+    "genre": "Epic",
+    "publicationDate": "8th century BCE"
+  },
+  {
+    "title": "The Alchemist",
+    "image": "https://m.media-amazon.com/images/I/41ybG235TcL._SY445_SX342_.jpg",
+    "author": "Paulo Coelho",
+    "genre": "Fantasy",
+    "publicationDate": "1988"
+  },
+  {
+    "title": "Fahrenheit 451",
+    "image": "https://m.media-amazon.com/images/I/41oWDDRb2cL._SY445_SX342_.jpg",
+    "author": "Ray Bradbury",
+    "genre": "Dystopian",
+    "publicationDate": "1953"
+  },
+  {
+    "title": "The Adventures of Huckleberry Finn",
+    "image": "https://m.media-amazon.com/images/I/51JUzISa5qL._SY445_SX342_.jpg",
+    "author": "Mark Twain",
+    "genre": "Adventure",
+    "publicationDate": "1884"
+  },
+  {
+    "title": "Wuthering Heights",
+    "image": "https://m.media-amazon.com/images/I/617bYgCOiKL._SY425_.jpg",
+    "author": "Emily Bronte",
+    "genre": "Gothic",
+    "publicationDate": "1847"
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "image": "https://m.media-amazon.com/images/I/51CiISiAMwL._SY445_SX342_.jpg",
+    "author": "Oscar Wilde",
+    "genre": "Gothic",
+    "publicationDate": "1890"
+  },
+  {
+    "title": "The Kite Runner",
+    "image": "https://m.media-amazon.com/images/I/81RUfP0ZOjL._SY425_.jpg",
+    "author": "Khaled Hosseini",
+    "genre": "Historical fiction",
+    "publicationDate": "2003"
+  },
+  {
+    "title": "The Chronicles of Narnia: The Lion, the Witch, and the Wardrobe",
+    "image": "https://m.media-amazon.com/images/I/51sQcUYpM9L._SY425_.jpg",
+    "author": "C.S. Lewis",
+    "genre": "Fantasy",
+    "publicationDate": "1950"
+  },
+  {
+    "title": "The Scarlet Letter",
+    "image": "https://m.media-amazon.com/images/I/61iylEmE5kL._SY425_.jpg",
+    "author": "Nathaniel Hawthorne",
+    "genre": "Historical fiction",
+    "publicationDate": "1850"
+  }
+]
