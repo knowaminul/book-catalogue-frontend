@@ -1,7 +1,5 @@
 import ProductCard from '@/components/ProductCard';
-import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
-import { Switch } from '@/components/ui/switch';
 import { useGetProductsQuery } from '@/redux/features/products/productApi';
 import {
   setGenre,
@@ -11,9 +9,14 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
+import { useLocation } from 'react-router-dom';
 
 export default function Products() {
-  const { data, isLoading, error } = useGetProductsQuery(undefined);
+  // const { data, isLoading } = useGetProductsQuery(undefined);
+    const { data, isLoading } = useGetProductsQuery(
+      useLocation().search.slice(1)
+    );
+
 
   const { genre, publicationYear } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
@@ -38,10 +41,12 @@ export default function Products() {
     dispatch(setPublicationYear(value[0]));
   };
 
-  // const productsData = data?.data;
   let productsData;
 
-  if (genre !== 'All') {
+  if (!genre || !publicationYear) {
+    productsData = data?.data;
+    console.log('productsData', productsData);
+  } else if (genre !== 'All') {
     productsData = data?.data?.filter(
       (item: { genre: string }) => item.genre === genre
     );

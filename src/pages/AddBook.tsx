@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { IProduct } from '@/types/globalTypes';

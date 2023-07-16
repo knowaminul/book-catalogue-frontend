@@ -10,8 +10,11 @@ import ProductReview from '@/components/ProductReview';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
 import ReactLoading from 'react-loading';
+import { useAppSelector } from '@/redux/hook';
 
 export default function ProductDetails() {
+  const { user } = useAppSelector((state) => state.user);
+  console.log('user', user);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -46,6 +49,11 @@ export default function ProductDetails() {
       </div>
     );
   }
+  console.log('user.email', user.email);
+  console.log('bookDetails.user', bookDetails.user);
+  // Check if the user and book.user are the same
+  const isCurrentUserBookOwner =
+    user && user.email && bookDetails && user.email === bookDetails.user;
 
   return (
     <>
@@ -71,17 +79,21 @@ export default function ProductDetails() {
             <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
               <HiHeart />
             </button>
-            <Link to={`/edit-book/${bookDetails?._id}`}>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
-                <HiPencilAlt />
-              </button>
-            </Link>
-            <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
-              onClick={handleDeleteProduct}
-            >
-              <HiTrash />
-            </button>
+            {isCurrentUserBookOwner && (
+              <>
+                <Link to={`/edit-book/${bookDetails?._id}`}>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
+                    <HiPencilAlt />
+                  </button>
+                </Link>
+                <button
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+                  onClick={handleDeleteProduct}
+                >
+                  <HiTrash />
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

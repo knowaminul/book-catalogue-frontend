@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { setUser } from '@/redux/features/user/userSlice';
+import SearchBox from '@/components/ui/seachBox';
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
@@ -50,9 +51,10 @@ export default function Navbar() {
                 </Button>
               </li>
               <li>
-                <Button variant="ghost">
+                <SearchBox />
+                {/* <Button variant="ghost">
                   <HiOutlineSearch size="25" />
-                </Button>
+                </Button> */}
               </li>
               <li>
                 <Cart />
@@ -84,17 +86,17 @@ export default function Navbar() {
                     )}
                     {user.email && (
                       <>
-                      <Link to="/add-book">
+                        <Link to="/add-book">
                           <DropdownMenuItem className="cursor-pointer">
                             Add New Book
                           </DropdownMenuItem>
                         </Link>
-                      <DropdownMenuItem
-                        onClick={handleLogout}
-                        className="cursor-pointer"
-                      >
-                        Logout
-                      </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={handleLogout}
+                          className="cursor-pointer"
+                        >
+                          Logout
+                        </DropdownMenuItem>
                       </>
                     )}
                   </DropdownMenuContent>
