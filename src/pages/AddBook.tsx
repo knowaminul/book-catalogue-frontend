@@ -4,7 +4,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { IProduct } from '@/types/globalTypes';
 import { useAppSelector } from '@/redux/hook';
-import { useCreateProductMutation } from '@/redux/features/products/productApi';
+import {
+  useCreateProductMutation,
+  useGetRecentlyAddedProductsQuery,
+} from '@/redux/features/products/productApi';
 import { toast } from '@/components/ui/use-toast';
 
 export default function AddBook() {
@@ -17,6 +20,10 @@ export default function AddBook() {
   } = useForm<IProduct>();
 
   const [createProduct, { isLoading }] = useCreateProductMutation();
+
+  const { refetch } = useGetRecentlyAddedProductsQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
 
   const onSubmit = async (data: IProduct) => {
     console.log('data: IProduct', data);
@@ -32,7 +39,8 @@ export default function AddBook() {
       toast({
         description: 'Book created successfully',
       });
-      navigate(`/books`);
+      await refetch();
+      navigate(`/`);
     } catch (error) {
       toast({
         description: 'Failed to create book',

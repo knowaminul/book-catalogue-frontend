@@ -11,6 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
+import ReactLoading from 'react-loading';
 
 export default function Products() {
   const { data, isLoading, error } = useGetProductsQuery(undefined);
@@ -40,6 +41,14 @@ export default function Products() {
   //   console.log('productsData', JSON.stringify(productsData));
 
   // }
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ReactLoading type="spin" color="#000" />
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">

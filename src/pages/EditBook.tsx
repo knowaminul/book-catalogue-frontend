@@ -1,11 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
-import { useParams, useNavigate  } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { IProduct } from '@/types/globalTypes';
 import { useAppSelector } from '@/redux/hook';
-import { useEditProductMutation, useSingleProductQuery } from '@/redux/features/products/productApi';
+import {
+  useEditProductMutation,
+  useSingleProductQuery,
+} from '@/redux/features/products/productApi';
 import { toast } from '@/components/ui/use-toast';
 
 export default function EditBook() {
@@ -13,7 +16,12 @@ export default function EditBook() {
   const navigate = useNavigate();
   console.log('bookId', id);
   const { user } = useAppSelector((state) => state.user);
-  const { handleSubmit, register, formState: { errors }, setValue } = useForm<IProduct>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    setValue,
+  } = useForm<IProduct>();
 
   const { data: product } = useSingleProductQuery(id);
   console.log('singleBookData', product.data);
@@ -28,21 +36,21 @@ export default function EditBook() {
       setValue('image', product.data.image);
     }
   }, [product, setValue]);
-  
+
   const onSubmit = async (data: IProduct) => {
     const newData = {
       ...data,
       publicationYear: Number(data.publicationYear),
-      user: user ? user.email : undefined
+      user: user ? user.email : undefined,
     };
     console.log('data: Updated Data', JSON.stringify(newData));
-    
+
     try {
       await updateProduct({ id, data: newData });
       toast({
         description: 'Book updated successfully',
       });
-      navigate(`/book/${id}`)
+      navigate(`/book/${id}`);
     } catch (error) {
       toast({
         description: 'Failed to update book',
@@ -84,7 +92,9 @@ export default function EditBook() {
                     {...register('author', { required: 'Author is required' })}
                   />
                   {errors.author && (
-                    <span className="text-red-500">{errors.author.message}</span>
+                    <span className="text-red-500">
+                      {errors.author.message}
+                    </span>
                   )}
                 </div>
                 <div className="flex flex-col">
@@ -106,7 +116,7 @@ export default function EditBook() {
                     id="publicationYear"
                     className="mt-2"
                     {...register('publicationYear', {
-                      required: 'Publication Year is required'
+                      required: 'Publication Year is required',
                     })}
                   />
                   {errors.publicationYear && (

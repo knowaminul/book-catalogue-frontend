@@ -28,6 +28,13 @@ const productApi = api.injectEndpoints({
       }),
       invalidatesTags: ['books'],
     }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/delete-book/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['books'],
+    }),
     postReview: builder.mutation({
       query: ({ id, data }) => ({
         url: `/review/${id}`,
@@ -49,6 +56,7 @@ export const {
   useGetRecentlyAddedProductsQuery,
   useCreateProductMutation,
   useEditProductMutation,
+  useDeleteProductMutation,
   usePostReviewMutation,
   useSingleProductQuery,
 } = productApi;

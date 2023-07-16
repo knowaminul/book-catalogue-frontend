@@ -1,11 +1,21 @@
 import ProductCard from '@/components/ProductCard';
 import { useGetRecentlyAddedProductsQuery } from '@/redux/features/products/productApi';
 import { IProduct } from '@/types/globalTypes';
+import ReactLoading from 'react-loading';
 
 export default function RecentlyAddedProducts() {
-  const { data, isLoading, error } = useGetRecentlyAddedProductsQuery(undefined);
+  const { data, isLoading, error } =
+    useGetRecentlyAddedProductsQuery(undefined);
 
   const productsData = data?.data;
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ReactLoading type="spin" color="#000" />
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-12 max-w-7xl mx-auto relative">
