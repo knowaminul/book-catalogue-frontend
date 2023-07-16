@@ -5,14 +5,11 @@ const productApi = api.injectEndpoints({
     getRecentlyAddedProducts: builder.query({
       query: () => '/recently-added-books',
     }),
-    // getProducts: builder.query({
-    //   query: () => '/books',
-    // }),
     getProducts: builder.query({
       query: (searchTerm) => ({
         url: '/books',
         params: {
-          searchTerm: searchTerm,
+          searchTerm,
         },
       }),
     }),

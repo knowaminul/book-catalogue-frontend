@@ -9,14 +9,9 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
-import { useLocation } from 'react-router-dom';
 
 export default function Products() {
-  // const { data, isLoading } = useGetProductsQuery(undefined);
-    const { data, isLoading } = useGetProductsQuery(
-      useLocation().search.slice(1)
-    );
-
+  const { data, isLoading } = useGetProductsQuery(undefined);
 
   const { genre, publicationYear } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
@@ -45,7 +40,6 @@ export default function Products() {
 
   if (!genre || !publicationYear) {
     productsData = data?.data;
-    console.log('productsData', productsData);
   } else if (genre !== 'All') {
     productsData = data?.data?.filter(
       (item: { genre: string }) => item.genre === genre

@@ -52,9 +52,6 @@ export default function Navbar() {
               </li>
               <li>
                 <SearchBox />
-                {/* <Button variant="ghost">
-                  <HiOutlineSearch size="25" />
-                </Button> */}
               </li>
               <li>
                 <Cart />

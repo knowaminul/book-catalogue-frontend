@@ -10,8 +10,8 @@ export default function SearchBox() {
 
   const onSubmit = (data: { keyword: string }) => {
     const { keyword } = data;
+    console.log('keywordSearch', keyword);
     if (keyword) {
-      console.log('keyword', keyword);
       navigate(`/books?searchTerm=${keyword.trim()}`);
     } else {
       navigate('/books');
