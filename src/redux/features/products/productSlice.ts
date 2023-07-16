@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IProduct {
   status: boolean;
@@ -20,7 +19,7 @@ const productSlice = createSlice({
     },
     setPriceRange: (state, action: PayloadAction<number>) => {
       state.priceRange = action.payload;
-    },
+    }
   },
 });
 

@@ -83,12 +83,19 @@ export default function Navbar() {
                       </>
                     )}
                     {user.email && (
+                      <>
+                      <Link to="/add-book">
+                          <DropdownMenuItem className="cursor-pointer">
+                            Add New Book
+                          </DropdownMenuItem>
+                        </Link>
                       <DropdownMenuItem
                         onClick={handleLogout}
                         className="cursor-pointer"
                       >
                         Logout
                       </DropdownMenuItem>
+                      </>
                     )}
                   </DropdownMenuContent>
                 </DropdownMenu>

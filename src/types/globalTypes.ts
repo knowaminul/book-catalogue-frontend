@@ -10,11 +10,12 @@
 // }
 
 export interface IProduct {
-  _id: number;
+  _id?: number;
   title: string;
   image: string;
   author: string;
   genre: string;
-  publicationDate: string;
+  publicationYear: number;
   quantity?: number;
+  user?: string;
 }

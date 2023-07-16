@@ -2,30 +2,53 @@ import { api } from '@/redux/api/apiSlice';
 
 const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
+    getRecentlyAddedProducts: builder.query({
+      query: () => '/recently-added-books',
+    }),
     getProducts: builder.query({
       query: () => '/books',
     }),
     singleProduct: builder.query({
       query: (id) => `/book/${id}`,
+      providesTags: ['books'],
     }),
-    postComment: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/comment/${id}`,
+    createProduct: builder.mutation({
+      query: ({ data }) => ({
+        url: '/add-book',
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['comments'],
+      // invalidatesTags: ['books'],
     }),
-    getComment: builder.query({
-      query: (id) => `/comment/${id}`,
-      providesTags: ['comments'],
+    editProduct: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/edit-book/${id}`,
+        method: 'PATCH',
+        body: data,
+      }),
+      invalidatesTags: ['books'],
+    }),
+    postReview: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/review/${id}`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['reviews'],
+    }),
+    getReview: builder.query({
+      query: (id) => `/review/${id}`,
+      providesTags: ['reviews'],
     }),
   }),
 });
 
 export const {
-  useGetCommentQuery,
+  useGetReviewQuery,
   useGetProductsQuery,
-  usePostCommentMutation,
+  useGetRecentlyAddedProductsQuery,
+  useCreateProductMutation,
+  useEditProductMutation,
+  usePostReviewMutation,
   useSingleProductQuery,
 } = productApi;
