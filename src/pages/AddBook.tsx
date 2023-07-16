@@ -1,24 +1,43 @@
 import { useForm } from 'react-hook-form';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { IProduct } from '@/types/globalTypes';
 import { useAppSelector } from '@/redux/hook';
 import { useCreateProductMutation } from '@/redux/features/products/productApi';
+import { toast } from '@/components/ui/use-toast';
 
 export default function AddBook() {
+  const navigate = useNavigate();
   const { user } = useAppSelector((state) => state.user);
-  const { handleSubmit, register, formState: { errors } } = useForm<IProduct>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<IProduct>();
 
   const [createProduct, { isLoading }] = useCreateProductMutation();
 
-  const onSubmit = (data: IProduct) => {
+  const onSubmit = async (data: IProduct) => {
     console.log('data: IProduct', data);
     const newData = {
       ...data,
       publicationYear: Number(data.publicationYear),
-      user: user ? user.email : undefined
+      user: user ? user.email : undefined,
     };
     createProduct(newData);
+
+    try {
+      await createProduct({ data: newData });
+      toast({
+        description: 'Book created successfully',
+      });
+      navigate(`/books`);
+    } catch (error) {
+      toast({
+        description: 'Failed to create book',
+      });
+    }
   };
 
   return (
@@ -76,7 +95,7 @@ export default function AddBook() {
                   id="publicationYear"
                   className="mt-2"
                   {...register('publicationYear', {
-                    required: 'Publication Year is required'
+                    required: 'Publication Year is required',
                   })}
                 />
                 {errors.publicationYear && (

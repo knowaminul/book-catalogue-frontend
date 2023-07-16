@@ -18,7 +18,7 @@ const productApi = api.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      // invalidatesTags: ['books'],
+      invalidatesTags: ['books'],
     }),
     editProduct: builder.mutation({
       query: ({ id, data }) => ({
