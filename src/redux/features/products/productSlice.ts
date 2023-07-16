@@ -1,28 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IProduct {
-  status: boolean;
-  priceRange: number;
+  genre: string;
+  publicationYear: number;
 }
 
+
 const initialState: IProduct = {
-  status: false,
-  priceRange: 150,
+  genre: '',
+  publicationYear: 2023,
 };
 
 const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    toggleState: (state) => {
-      state.status = !state.status;
+    setGenre: (state, action: PayloadAction<string>) => {
+      state.genre = action.payload;
     },
-    setPriceRange: (state, action: PayloadAction<number>) => {
-      state.priceRange = action.payload;
-    }
+    setPublicationYear: (state, action: PayloadAction<number>) => {
+      state.publicationYear = action.payload;
+    },
   },
 });
 
-export const { toggleState, setPriceRange } = productSlice.actions;
+export const { setGenre, setPublicationYear } = productSlice.actions;
 
 export default productSlice.reducer;
