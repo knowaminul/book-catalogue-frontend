@@ -66,7 +66,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-center lg:justify-between border-b border-gray-300 mt-10">
+      <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-center lg:justify-between border-b border-gray-300 p-5 mt-10">
         <div className="w-full lg:w-1/2 flex justify-center">
           <img src={bookDetails?.image} alt="" className="max-w-full h-auto" />
         </div>
