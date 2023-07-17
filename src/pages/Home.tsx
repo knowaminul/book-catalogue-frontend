@@ -16,7 +16,6 @@ export default function Home() {
   const {
     data: searchResult,
     isLoading: isSearchLoading,
-    error: searchError,
   } = useGetSearchResultQuery({
     keyword,
   });

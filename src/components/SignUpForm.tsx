@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useForm } from 'react-hook-form';
-import { FcGoogle } from 'react-icons/fc';
 import { createUser } from '@/redux/features/user/userSlice';
 import { useAppDispatch } from '@/redux/hook';
 

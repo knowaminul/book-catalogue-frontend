@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from '../components/ui/dropdown-menu';
-import { HiOutlineSearch } from 'react-icons/hi';
 import Wishlist from '../components/Wishlist';
 import logo from '../assets/images/book-catelogue-logo.png';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';

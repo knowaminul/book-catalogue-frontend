@@ -21,7 +21,7 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const { data: book, isLoading, error } = useSingleProductQuery(id);
+  const { data: book, isLoading } = useSingleProductQuery(id);
   const [deleteProduct] = useDeleteProductMutation();
 
   const bookDetails = book?.data;

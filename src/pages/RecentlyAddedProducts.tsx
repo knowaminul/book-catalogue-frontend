@@ -4,7 +4,7 @@ import { IProduct } from '@/types/globalTypes';
 import ReactLoading from 'react-loading';
 
 export default function RecentlyAddedProducts() {
-  const { data, isLoading, error } =
+  const { data, isLoading } =
     useGetRecentlyAddedProductsQuery(undefined);
 
   const productsData = data?.data;
