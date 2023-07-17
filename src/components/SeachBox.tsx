@@ -12,7 +12,7 @@ export default function SearchBox() {
     const { keyword } = data;
     console.log('keywordSearch', keyword);
     if (keyword) {
-      navigate(`/books?searchTerm=${keyword.trim()}`);
+      navigate(`/?searchTerm=${keyword.trim()}`);
     } else {
       navigate('/books');
     }

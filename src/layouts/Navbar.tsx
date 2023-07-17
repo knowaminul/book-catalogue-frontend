@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { setUser } from '@/redux/features/user/userSlice';
-import SearchBox from '@/components/ui/seachBox';
+import SearchBox from '@/components/SeachBox';
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);

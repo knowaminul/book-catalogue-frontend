@@ -19,7 +19,7 @@ export default function RecentlyAddedProducts() {
 
   return (
     <div className="grid grid-cols-12 max-w-7xl mx-auto relative">
-      <div className="col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pb-20 sm:justify-center">
+      <div className="col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pb-10 sm:justify-center">
         {productsData?.map((product: IProduct) => (
           <div
             key={product._id}

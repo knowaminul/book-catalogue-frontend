@@ -6,11 +6,8 @@ const productApi = api.injectEndpoints({
       query: () => '/recently-added-books',
     }),
     getProducts: builder.query({
-      query: (searchTerm) => ({
+      query: () => ({
         url: '/books',
-        params: {
-          searchTerm,
-        },
       }),
     }),
     singleProduct: builder.query({
@@ -52,6 +49,12 @@ const productApi = api.injectEndpoints({
       query: (id) => `/review/${id}`,
       providesTags: ['reviews'],
     }),
+    getSearchResult: builder.query({
+      query: ({ keyword }) => ({
+        url: `/books/search`,
+        params: { keyword },
+      }),
+    }),
   }),
 });
 
@@ -64,4 +67,5 @@ export const {
   useDeleteProductMutation,
   usePostReviewMutation,
   useSingleProductQuery,
+  useGetSearchResultQuery
 } = productApi;
