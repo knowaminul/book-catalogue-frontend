@@ -2,21 +2,19 @@ import { IProduct } from '@/types/globalTypes';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-interface ICart {
+interface IWishlist {
   products: IProduct[];
-  total: number;
 }
 
-const initialState: ICart = {
+const initialState: IWishlist = {
   products: [],
-  total: 0,
 };
 
-const cartSlice = createSlice({
-  name: 'cart',
+const wishlistSlice = createSlice({
+  name: 'wishlist',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<IProduct>) => {
+    addToWishlist: (state, action: PayloadAction<IProduct>) => {
       const existing = state.products.find(
         (product) => product._id === action.payload._id
       );
@@ -27,7 +25,6 @@ const cartSlice = createSlice({
         state.products.push({ ...action.payload, quantity: 1 });
       }
 
-      state.total += action.payload.price;
     },
     removeOne: (state, action: PayloadAction<IProduct>) => {
       const existing = state.products.find(
@@ -41,19 +38,15 @@ const cartSlice = createSlice({
           (product) => product._id !== action.payload._id
         );
       }
-
-      state.total -= action.payload.price;
     },
-    removeFromCart: (state, action: PayloadAction<IProduct>) => {
+    removeFromWishlist: (state, action: PayloadAction<IProduct>) => {
       state.products = state.products.filter(
         (product) => product._id !== action.payload._id
       );
-
-      state.total -= action.payload.price * action.payload.quantity!;
     },
   },
 });
 
-export const { addToCart, removeFromCart, removeOne } = cartSlice.actions;
+export const { addToWishlist, removeFromWishlist, removeOne } = wishlistSlice.actions;
 
-export default cartSlice.reducer;
+export default wishlistSlice.reducer;

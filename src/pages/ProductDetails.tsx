@@ -10,11 +10,14 @@ import ProductReview from '@/components/ProductReview';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
 import ReactLoading from 'react-loading';
-import { useAppSelector } from '@/redux/hook';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { addToWishlist } from '@/redux/features/wishlist/wishlistSlice';
+import { IProduct } from '@/types/globalTypes';
 
 export default function ProductDetails() {
   const { user } = useAppSelector((state) => state.user);
-  console.log('user', user);
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -49,11 +52,17 @@ export default function ProductDetails() {
       </div>
     );
   }
-  console.log('user.email', user.email);
-  console.log('bookDetails.user', bookDetails.user);
+
   // Check if the user and book.user are the same
   const isCurrentUserBookOwner =
     user && user.email && bookDetails && user.email === bookDetails.user;
+
+  const handleAddProduct = (product: IProduct) => {
+    dispatch(addToWishlist(product));
+    toast({
+      description: 'Added to Wishlist',
+    });
+  };
 
   return (
     <>
@@ -76,7 +85,10 @@ export default function ProductDetails() {
             {bookDetails?.publicationYear}
           </p>
           <div className="flex flex-wrap justify-center lg:justify-start">
-            <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+            <button
+              className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => handleAddProduct(bookDetails)}
+            >
               <HiHeart />
             </button>
             {isCurrentUserBookOwner && (

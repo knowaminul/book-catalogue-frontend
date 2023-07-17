@@ -10,7 +10,7 @@ import {
   DropdownMenuContent,
 } from '../components/ui/dropdown-menu';
 import { HiOutlineSearch } from 'react-icons/hi';
-import Cart from '../components/Cart';
+import Wishlist from '../components/Wishlist';
 import logo from '../assets/images/book-catelogue-logo.png';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { signOut } from 'firebase/auth';
@@ -54,7 +54,7 @@ export default function Navbar() {
                 <SearchBox />
               </li>
               <li>
-                <Cart />
+                <Wishlist />
               </li>
               <li className="ml-5">
                 <DropdownMenu>
