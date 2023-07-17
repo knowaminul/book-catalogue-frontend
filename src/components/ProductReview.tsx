@@ -9,12 +9,14 @@ import {
 } from '@/redux/features/products/productApi';
 import { toast } from '@/components/ui/use-toast';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '@/redux/hook';
 
 interface IProps {
   id: string;
 }
 
 export default function ProductReview({ id }: IProps) {
+  const { user } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
   const [inputValue, setInputValue] = useState<string>('');
@@ -23,8 +25,6 @@ export default function ProductReview({ id }: IProps) {
     refetchOnMountOrArgChange: true,
     pollingInterval: 30000,
   });
-
-  console.log('reviews:', JSON.stringify(data));
 
   const [postReview] = usePostReviewMutation();
 
@@ -56,22 +56,26 @@ export default function ProductReview({ id }: IProps) {
 
   return (
     <div className="max-w-7xl mx-auto mt-5">
-      <h5 className="text-xl font-black text-primary mt-10 mb-5">
-        Write a review
-      </h5>
-      <form className="flex gap-5 items-center" onSubmit={handleSubmit}>
-        <Textarea
-          className="min-h-[30px]"
-          onChange={handleChange}
-          value={inputValue}
-        />
-        <Button
-          type="submit"
-          className="rounded-full h-10 w-10 p-2 text-[25px]"
-        >
-          <FiSend />
-        </Button>
-      </form>
+      {user.email !== null && (
+        <>
+          <h5 className="text-xl font-black text-primary mt-10 mb-5">
+            Write a review
+          </h5>
+          <form className="flex gap-5 items-center" onSubmit={handleSubmit}>
+            <Textarea
+              className="min-h-[30px]"
+              onChange={handleChange}
+              value={inputValue}
+            />
+            <Button
+              type="submit"
+              className="rounded-full h-10 w-10 p-2 text-[25px]"
+            >
+              <FiSend />
+            </Button>
+          </form>
+        </>
+      )}
       <div className="mt-10">
         {data?.data?.reviews == undefined ||
         data?.data?.reviews.length === 0 ? (
